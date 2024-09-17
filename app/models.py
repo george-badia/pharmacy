@@ -24,5 +24,8 @@ class Medication(Base):
     quantity = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
 
+  
 
+    def __repr__(self):
+        return f'<Medication(id={self.id}, name="{self.name}")>'
       
