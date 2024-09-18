@@ -55,17 +55,16 @@ class Prescription(Base):
     __tablename__ = 'prescription'
     
     id = Column(Integer, primary_key=True, autoincrement=True)
-    customer_id = Column(Integer, ForeignKey('customer.id'))
-    medication_id = Column(Integer, ForeignKey('medication.id'))
-    date_issued = Column(Date, nullable=False)
+    customer_id = Column(Integer, ForeignKey('customers.id'), nullable=False)
+    medication_id = Column(Integer, ForeignKey('medications.id'), nullable=False)
     quantity = Column(Integer, nullable=False)
-    prescriber_name = Column(String, nullable=False)
-    instructions = Column(String, nullable=False)
+    date_issued = Column(Date, nullable=False)
+    instruction = Column(String, nullable=False)
 
     #add relationship to customer and medication
     customer = relationship('Customer', back_populates='prescriptions')
     medication = relationship('Medication', back_populates='prescriptions')
-    
+
    def __repr__(self):
          return f"<Prescription:(customer_id={self.customer_id}, medication_id={self.medication_id}, quantity={self.quantity}, date_issued={self.date_issued} instruction={self.instruction})>"
 
