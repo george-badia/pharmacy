@@ -62,6 +62,9 @@ class Prescription(Base):
     prescriber_name = Column(String, nullable=False)
     instructions = Column(String, nullable=False)
 
+    #add relationship to customer and medication
+    customer = relationship('Customer', back_populates='prescriptions')
+    medication = relationship('Medication', back_populates='prescriptions')
     
    def __repr__(self):
          return f"<Prescription:(customer_id={self.customer_id}, medication_id={self.medication_id}, quantity={self.quantity}, date_issued={self.date_issued} instruction={self.instruction})>"
