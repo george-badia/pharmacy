@@ -14,7 +14,23 @@ session = Session()
 # Define the declarative base class
 Base = declarative_base()
 
-# Define the Medication class
+
+# Customer model
+class Customer(Base):
+    __tablename__ = 'customer'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=False)
+    address = Column(String, nullable=False)
+    phone_number = Column(String, nullable=False)
+
+  
+
+   def __repr__(self):
+      return f"<Customer:(name={self.name}, phone={self.phone}, email={self.email})>"
+
+
+#  Medication Model
 class Medication(Base):
     __tablename__ = 'medication'
     
@@ -27,5 +43,7 @@ class Medication(Base):
   
 
     def __repr__(self):
-        return f'<Medication(id={self.id}, name="{self.name}")>'
+        return f'<Medication:(id={self.id}, name="{self.name}")>'
+
+
       
