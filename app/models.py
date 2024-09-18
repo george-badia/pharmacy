@@ -46,4 +46,20 @@ class Medication(Base):
         return f'<Medication:(id={self.id}, name="{self.name}")>'
 
 
+#  Prescription Model
+class Prescription(Base):
+    __tablename__ = 'prescription'
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    customer_id = Column(Integer, ForeignKey('customer.id'))
+    medication_id = Column(Integer, ForeignKey('medication.id'))
+    date_issued = Column(Date, nullable=False)
+    quantity = Column(Integer, nullable=False)
+    prescriber_name = Column(String, nullable=False)
+    instructions = Column(String, nullable=False)
+
+    
+   def __repr__(self):
+         return f"<Prescription:(customer_id={self.customer_id}, medication_id={self.medication_id}, quantity={self.quantity}, date_issued={self.date_issued} instruction={self.instruction})>"
+
       
