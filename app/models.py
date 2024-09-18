@@ -74,7 +74,7 @@ class User(Base):
         return f"<User:(username={self.username}, password={self.password})>"
 
 # Create an SQLite database engine
-engine = create_engine('sqlite:///pharmacy.db')
+engine = create_engine('sqlite:///app/pharmacy.db')
 
 # Create the database schema (all tables)
 Base.metadata.create_all(engine)
