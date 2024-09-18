@@ -7,7 +7,7 @@ from models import Band, Venue, Concert
 
 if __name__ == '__main__':
     
-    engine = create_engine('sqlite:///app/concerts.db')
+    engine = create_engine('sqlite:///pharmacy.db')
     Session = sessionmaker(bind=engine)
     session = Session()
 
