@@ -3,7 +3,7 @@ import random
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import ipdb;
-from models import Band, Venue, Concert
+from models import Medication, Prescription, Customer
 
 if __name__ == '__main__':
     

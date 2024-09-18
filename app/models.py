@@ -28,7 +28,7 @@ class Customer(Base):
     prescriptions = relationship('Prescription', back_populates='customer')
 
     def __repr__(self):
-        return f"<Customer(name={self.name}, phone={self.phone}, email={self.email})>"
+        return f"<Customer:(name={self.name}, phone={self.phone}, email={self.email})>"
 
 
 #  Medication Model
@@ -77,7 +77,7 @@ class User(Base):
 
 
     def __repr__(self):
-        return f"<User(username={self.username}, password={self.password})>"
+        return f"<User:(username={self.username}, password={self.password})>"
 
 
 
