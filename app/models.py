@@ -4,12 +4,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 
-# Create an SQLite database engine and initialize the database schema
-engine = create_engine('sqlite:///pharmacy.db')
-Base.metadata.create_all(engine)
-# Create a session factory bound to the engine
-Session = sessionmaker(bind=engine)
-session = Session()
 
 # Define the declarative base class
 Base = declarative_base()
@@ -55,7 +49,7 @@ class Prescription(Base):
     
     id = Column(Integer, primary_key=True, autoincrement=True)
     customer_id = Column(Integer, ForeignKey('customers.id'), nullable=False)
-    medication_id = Column(Integer, ForeignKey('medications.id'), nullable=False)
+    medication_id = Column(Integer, ForeignKey('medication.id'), nullable=False) 
     quantity = Column(Integer, nullable=False)
     date_issued = Column(Date, nullable=False)
     instruction = Column(String, nullable=False)
@@ -79,6 +73,14 @@ class User(Base):
     def __repr__(self):
         return f"<User:(username={self.username}, password={self.password})>"
 
+# Create an SQLite database engine
+engine = create_engine('sqlite:///pharmacy.db')
 
+# Create the database schema (all tables)
+Base.metadata.create_all(engine)
+
+# Create a session factory bound to the engine
+Session = sessionmaker(bind=engine)
+session = Session()
 
       
