@@ -17,19 +17,18 @@ Base = declarative_base()
 
 # Customer model
 class Customer(Base):
-    __tablename__ = 'customer'
-    
+    __tablename__ = 'customers'
+
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
-    address = Column(String, nullable=False)
-    phone_number = Column(String, nullable=False)
-   
-   #Add relationship to prescription
+    phone = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+
+    # Add relationship to Prescription
     prescriptions = relationship('Prescription', back_populates='customer')
 
-
-   def __repr__(self):
-      return f"<Customer:(name={self.name}, phone={self.phone}, email={self.email})>"
+    def __repr__(self):
+        return f"<Customer(name={self.name}, phone={self.phone}, email={self.email})>"
 
 
 #  Medication Model
@@ -65,7 +64,21 @@ class Prescription(Base):
     customer = relationship('Customer', back_populates='prescriptions')
     medication = relationship('Medication', back_populates='prescriptions')
 
-   def __repr__(self):
-         return f"<Prescription:(customer_id={self.customer_id}, medication_id={self.medication_id}, quantity={self.quantity}, date_issued={self.date_issued} instruction={self.instruction})>"
+    def __repr__(self):
+        return f"<Prescription:(customer_id={self.customer_id}, medication_id={self.medication_id}, quantity={self.quantity}, date_issued={self.date_issued} instruction={self.instruction})>"
+
+#User model
+class User(Base):
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+
+
+    def __repr__(self):
+        return f"<User(username={self.username}, password={self.password})>"
+
+
 
       
