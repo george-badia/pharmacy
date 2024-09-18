@@ -26,7 +26,7 @@ class Customer(Base):
    
    #Add relationship to prescription
     prescriptions = relationship('Prescription', back_populates='customer')
-    
+
 
    def __repr__(self):
       return f"<Customer:(name={self.name}, phone={self.phone}, email={self.email})>"
@@ -42,7 +42,9 @@ class Medication(Base):
     quantity = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
 
-  
+   #Add relationship to medication
+    prescriptions = relationship('Prescription', back_populates='medication')
+
 
     def __repr__(self):
         return f'<Medication:(id={self.id}, name="{self.name}")>'
