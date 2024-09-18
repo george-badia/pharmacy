@@ -23,8 +23,10 @@ class Customer(Base):
     name = Column(String, nullable=False)
     address = Column(String, nullable=False)
     phone_number = Column(String, nullable=False)
-
-  
+   
+   #Add relationship to prescription
+    prescriptions = relationship('Prescription', back_populates='customer')
+    
 
    def __repr__(self):
       return f"<Customer:(name={self.name}, phone={self.phone}, email={self.email})>"
